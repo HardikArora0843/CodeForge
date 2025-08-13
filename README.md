@@ -1,8 +1,8 @@
-# 🚀 LeetPro - Advanced Coding Platform
+# 🚀 CodeForge - Advanced Coding Platform
 
 <div align="center">
 
-![LeetPro Logo](https://img.shields.io/badge/LeetPro-Coding%20Platform-blue?style=for-the-badge&logo=code&logoColor=white)
+![CodeForge Logo](https://img.shields.io/badge/CodeForge-Coding%20Platform-blue?style=for-the-badge&logo=code&logoColor=white)
 
 [![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat&logo=react&logoColor=white)](https://reactjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -175,7 +175,7 @@ Nodemon 3.1.10         - Development server
 ## 🏗️ Project Structure
 
 ```
-leetpro/
+CodeForge/
 ├── 📁 backend/                 # Node.js Backend
 │   ├── 📁 src/
 │   │   ├── 📁 config/          # Database & Redis configuration
@@ -219,8 +219,8 @@ leetpro/
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/leetpro.git
-cd leetpro
+git clone https://github.com/yourusername/CodeForge.git
+cd CodeForge
 ```
 
 2. **Install Backend Dependencies**
@@ -269,7 +269,7 @@ PORT=3000
 FRONTEND_URL=http://localhost:5173
 
 # Database
-DB_CONNECT_STRING=mongodb://localhost:27017/leetpro
+DB_CONNECT_STRING=mongodb://localhost:27017/CodeForge
 
 # Redis Configuration
 REDIS_PASS=your_redis_password
@@ -641,6 +641,6 @@ Neutral: Gray scale (#1f2937 to #f9fafb)
 
 <div align="center">
 
-**Made with ❤️ for The LeetPro**
+**Made with ❤️ for The CodeForge**
 
 </div>
