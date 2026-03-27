@@ -1,14 +1,31 @@
 const Assessment = require('../models/assessment.js');
 const Problem = require('../models/problem.js');
 const User = require('../models/user.js');
+const bcrypt = require('bcryptjs');
 
 const seedAssessments = async () => {
     try {
         // Find an admin user to be the creator
-        const adminUser = await User.findOne({ role: 'admin' });
+        // const adminUser = await User.findOne({ role: 'admin' });
+        // if (!adminUser) {
+        //     console.log('No admin user found. Please create an admin user first.');
+        //     return;
+        // }
+        let adminUser = await User.findOne({ role: 'admin' });
+
         if (!adminUser) {
-            console.log('No admin user found. Please create an admin user first.');
-            return;
+            console.log('No admin found → creating default admin...');
+        
+            const hashedPassword = await bcrypt.hash("Admin123@#$", 10);
+        
+            adminUser = await User.create({
+                firstName: "Admin",
+                emailId: "admin@gmail.com",
+                password: hashedPassword,
+                role: "admin"
+            });
+        
+            console.log('Admin created successfully!');
         }
 
         // Clear existing assessments
