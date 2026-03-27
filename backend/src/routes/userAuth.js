@@ -6,6 +6,7 @@ const authRouter =  express.Router();
 const {register, login,logout, adminRegister,deleteProfile, forgotPassword, resetPassword} = require('../controllers/userAuthent')
 const userMiddleware = require("../middleware/userMiddleware.js");
 const adminMiddleware = require('../middleware/adminMiddleware.js');
+const cookieOptions = require('../utils/cookieOptions');
 
 // Register
 authRouter.post('/register', register);
@@ -44,12 +45,16 @@ authRouter.get('/auth/google/callback',
             { expiresIn: '7d' }
         );
         // Set token as cookie - consistent with regular login
+        // res.cookie('token', token, {
+        //     httpOnly: true,
+        //     secure: true, // set to true for HTTPS
+        //     sameSite: "None",
+        //     maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+        // });
         res.cookie('token', token, {
-            httpOnly: true,
-            secure: true, // set to true for HTTPS
-            sameSite: "None",
-            maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
-        });
+  ...cookieOptions,
+  maxAge: 7 * 24 * 60 * 60 * 1000
+});
         // Redirect to frontend
         res.redirect(process.env.FRONTEND_URL || 'http://localhost:5173');
     }
