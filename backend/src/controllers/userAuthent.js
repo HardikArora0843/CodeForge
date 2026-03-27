@@ -5,6 +5,7 @@ const crypto = require('crypto');
 const validate = require('../utils/validator.js');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const cookieOptions = require('../utils/cookieOptions');
 const Submission = require("../models/submission.js")
 
 
@@ -34,10 +35,15 @@ const register = async (req,res)=>{
         role:user.role,
     }
         
-     res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "None",
+    //  res.cookie('token', token, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "None",
+    //   maxAge: 60 * 60 * 1000
+    // });
+
+    res.cookie('token', token, {
+      ...cookieOptions,
       maxAge: 60 * 60 * 1000
     });
 
@@ -77,13 +83,18 @@ const login = async (req,res)=>{
         }
 
         const token =  jwt.sign({_id:user._id , emailId:emailId, role:user.role},process.env.JWT_KEY,{expiresIn: 60*60});
-        res.cookie('token', token, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "None",
-          maxAge: 60 * 60 * 1000
-        });
+        // res.cookie('token', token, {
+        //   httpOnly: true,
+        //   secure: true,
+        //   sameSite: "None",
+        //   maxAge: 60 * 60 * 1000
+        // });
 
+        res.cookie('token', token, {
+  ...cookieOptions,
+  maxAge: 60 * 60 * 1000
+});
+        
         res.status(201).json({
             user:reply,
             message:"Loggin Successfully"
@@ -132,12 +143,17 @@ const adminRegister = async(req,res)=>{
     
      const user =  await User.create(req.body);
      const token =  jwt.sign({_id:user._id , emailId:emailId, role:user.role},process.env.JWT_KEY,{expiresIn: 60*60});
-     res.cookie('token', token, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "None",
-          maxAge: 60 * 60 * 1000
-    });
+    //  res.cookie('token', token, {
+    //       httpOnly: true,
+    //       secure: true,
+    //       sameSite: "None",
+    //       maxAge: 60 * 60 * 1000
+    // });
+
+    res.cookie('token', token, {
+  ...cookieOptions,
+  maxAge: 60 * 60 * 1000
+});
 
      res.status(201).send("User Registered Successfully");
     }
@@ -228,12 +244,16 @@ const resetPassword = async (req, res) => {
             { expiresIn: 60 * 60 }
         );
         
-        res.cookie('token', jwtToken, {
-            httpOnly: true,
-            secure: true,
-            sameSite: "None",
-            maxAge: 60 * 60 * 1000
-        });
+        // res.cookie('token', jwtToken, {
+        //     httpOnly: true,
+        //     secure: true,
+        //     sameSite: "None",
+        //     maxAge: 60 * 60 * 1000
+        // });
+        res.cookie('token', token, {
+  ...cookieOptions,
+  maxAge: 60 * 60 * 1000
+});
         
         // Return user data along with success message
         const reply = {
