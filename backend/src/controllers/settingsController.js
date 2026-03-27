@@ -2,6 +2,7 @@ const User = require('../models/user.js');
 const UserProfile = require('../models/userProfile.js');
 const bcrypt = require('bcryptjs');
 const { updateSubmissionActivity } = require('./dashboardController.js');
+const cookieOptions = require('../utils/cookieOptions');
 
 const getSettings = async (req, res) => {
     try {
@@ -157,7 +158,8 @@ const deleteAccount = async (req, res) => {
         ]);
 
         // Clear the authentication cookie
-        res.cookie("token", null, { expires: new Date(Date.now()) });
+        // res.cookie("token", null, { expires: new Date(Date.now()) });
+        res.clearCookie("token", cookieOptions);
 
         res.status(200).json({
             message: 'Account deleted successfully'
