@@ -176,7 +176,8 @@ const deleteProfile = async(req,res)=>{
     // await Submission.deleteMany({userId});
     
     // Clear the authentication cookie
-    res.cookie("token", null, { expires: new Date(Date.now()) });
+    // res.cookie("token", null, { expires: new Date(Date.now()) });
+    res.clearCookie("token", cookieOptions);
     
     res.status(200).send("Deleted Successfully");
 
