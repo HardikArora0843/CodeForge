@@ -120,7 +120,8 @@ const logout = async(req,res)=>{
     //    Token add kar dung Redis ke blockList
     //    Cookies ko clear kar dena.....
 
-    res.cookie("token",null,{expires: new Date(Date.now())});
+    // res.cookie("token",null,{expires: new Date(Date.now())});
+    res.clearCookie("token", cookieOptions);
     res.send("Logged Out Succesfully");
 
     }
