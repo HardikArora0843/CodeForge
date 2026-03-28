@@ -20,18 +20,18 @@ const adminMiddleware = async (req,res,next)=>{
 
         const result = await User.findById(_id);
 
-        if(payload.role!='admin')
-            throw new Error("Invalid Token");
-
         if(!result){
             throw new Error("User Doesn't Exist");
         }
 
-        // Redis ke blockList mein persent toh nahi hai
+        // Use DB role (source of truth), not JWT — old cookies still say role:user after MongoDB promotion to admin
+        if(result.role !== 'admin'){
+            return res.status(403).json({ message: 'Admin privileges required' });
+        }
 
-        const IsBlocked = await redisClient.exists(`token:${token}`);
+        const isBlocked = await redisClient.get(`token:${token}`);
 
-        if(IsBlocked)
+        if(isBlocked === 'Blocked')
             throw new Error("Invalid Token");
 
         req.result = result;
