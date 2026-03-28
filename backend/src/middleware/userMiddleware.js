@@ -7,8 +7,14 @@ const userMiddleware = async (req,res,next)=>{
     try{
         
         const {token} = req.cookies;
+
+        console.log("Token from cookie:", token);
+        
         if(!token)
             throw new Error("Token is not persent");
+        
+        console.log("Redis exists check:", await redisClient.exists(`token:${token}`));
+        console.log("Redis value:", await redisClient.get(`token:${token}`));
 
         const payload = jwt.verify(token,process.env.JWT_KEY);
 
