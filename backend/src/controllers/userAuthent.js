@@ -42,8 +42,16 @@ const register = async (req,res)=>{
     //   maxAge: 60 * 60 * 1000
     // });
 
+    // res.cookie('token', token, {
+    //   ...cookieOptions,
+    //   maxAge: 60 * 60 * 1000
+    // });
+
     res.cookie('token', token, {
-      ...cookieOptions,
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      path: "/",                 // 🔥 VERY IMPORTANT
       maxAge: 60 * 60 * 1000
     });
 
@@ -90,8 +98,15 @@ const login = async (req,res)=>{
         //   maxAge: 60 * 60 * 1000
         // });
 
+//         res.cookie('token', token, {
+//   ...cookieOptions,
+//   maxAge: 60 * 60 * 1000
+// });
         res.cookie('token', token, {
-  ...cookieOptions,
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/",                 // 🔥 VERY IMPORTANT
   maxAge: 60 * 60 * 1000
 });
         
@@ -124,7 +139,14 @@ const logout = async(req,res)=>{
     //    Cookies ko clear kar dena.....
 
     // res.cookie("token",null,{expires: new Date(Date.now())});
-    res.clearCookie("token", cookieOptions);
+    // res.clearCookie("token", cookieOptions);
+        res.cookie("token", null, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/",               // 🔥 MUST MATCH
+  expires: new Date(0)
+});
     res.send("Logged Out Succesfully");
 
     }
@@ -154,11 +176,17 @@ const adminRegister = async(req,res)=>{
     //       maxAge: 60 * 60 * 1000
     // });
 
-    res.cookie('token', token, {
-  ...cookieOptions,
+//     res.cookie('token', token, {
+//   ...cookieOptions,
+//   maxAge: 60 * 60 * 1000
+// });
+res.cookie('token', token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/",                 // 🔥 VERY IMPORTANT
   maxAge: 60 * 60 * 1000
 });
-
      res.status(201).send("User Registered Successfully");
     }
     catch(err){
@@ -180,7 +208,14 @@ const deleteProfile = async(req,res)=>{
     
     // Clear the authentication cookie
     // res.cookie("token", null, { expires: new Date(Date.now()) });
-    res.clearCookie("token", cookieOptions);
+    // res.clearCookie("token", cookieOptions);
+        res.cookie("token", null, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/",               // 🔥 MUST MATCH
+  expires: new Date(0)
+});
     
     res.status(200).send("Deleted Successfully");
 
@@ -255,8 +290,16 @@ const resetPassword = async (req, res) => {
         //     sameSite: "None",
         //     maxAge: 60 * 60 * 1000
         // });
+//         res.cookie('token', token, {
+//   ...cookieOptions,
+//   maxAge: 60 * 60 * 1000
+// });
+
         res.cookie('token', token, {
-  ...cookieOptions,
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  path: "/",                 // 🔥 VERY IMPORTANT
   maxAge: 60 * 60 * 1000
 });
         
