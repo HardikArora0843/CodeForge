@@ -91,6 +91,8 @@ const InitalizeConnection = async ()=>{
     try{
 
         await Promise.all([main(),redisClient.connect()]);
+        await redisClient.flushAll();
+        console.log("Redis cleared");
         console.log("DB Connected");
         
         server.listen(process.env.PORT, ()=>{             
