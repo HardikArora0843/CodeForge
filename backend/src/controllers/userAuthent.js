@@ -112,11 +112,14 @@ const logout = async(req,res)=>{
 
     try{
         const {token} = req.cookies;
-        const payload = jwt.decode(token);
 
-
-        await redisClient.set(`token:${token}`,'Blocked');
-        await redisClient.expireAt(`token:${token}`,payload.exp);
+        if(token){
+            const payload = jwt.decode(token);
+    
+    
+            await redisClient.set(`token:${token}`,'Blocked');
+            await redisClient.expireAt(`token:${token}`,payload.exp);
+        }
     //    Token add kar dung Redis ke blockList
     //    Cookies ko clear kar dena.....
 
