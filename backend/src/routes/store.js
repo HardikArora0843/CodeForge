@@ -11,60 +11,60 @@ storeRouter.get('/goodies', async (req, res) => {
     const goodies = [
       {
         id: 'tshirt',
-        name: 'LeetPro T-shirt',
+        name: 'CodeForge T-shirt',
         price: 150,
         image: 'https://images.pexels.com/photos/8532616/pexels-photo-8532616.jpeg',
-        description: 'Premium quality LeetPro branded T-shirt made from 100% cotton.',
+        description: 'Premium quality CodeForge branded T-shirt made from 100% cotton.',
         category: 'apparel',
         inStock: true,
         estimatedDelivery: '7-10 business days'
       },
       {
         id: 'cap',
-        name: 'LeetPro Cap',
+        name: 'CodeForge Cap',
         price: 100,
         image: 'https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg',
-        description: 'Stylish LeetPro cap perfect for coding sessions.',
+        description: 'Stylish CodeForge cap perfect for coding sessions.',
         category: 'apparel',
         inStock: true,
         estimatedDelivery: '5-7 business days'
       },
       {
         id: 'pen',
-        name: 'LeetPro Pen',
+        name: 'CodeForge Pen',
         price: 50,
         image: 'https://images.pexels.com/photos/29253139/pexels-photo-29253139.jpeg',
-        description: 'Smooth writing LeetPro branded pen.',
+        description: 'Smooth writing CodeForge branded pen.',
         category: 'stationery',
         inStock: true,
         estimatedDelivery: '3-5 business days'
       },
       {
         id: 'bag',
-        name: 'LeetPro Backpack',
+        name: 'CodeForge Backpack',
         price: 300,
         image: 'https://images.pexels.com/photos/2905238/pexels-photo-2905238.jpeg',
-        description: 'Spacious and durable LeetPro backpack for all your coding gear.',
+        description: 'Spacious and durable CodeForge backpack for all your coding gear.',
         category: 'accessories',
         inStock: true,
         estimatedDelivery: '7-14 business days'
       },
       {
         id: 'mug',
-        name: 'LeetPro Coffee Mug',
+        name: 'CodeForge Coffee Mug',
         price: 75,
         image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg',
-        description: 'Start your coding day with coffee in this premium LeetPro mug.',
+        description: 'Start your coding day with coffee in this premium CodeForge mug.',
         category: 'accessories',
         inStock: true,
         estimatedDelivery: '5-7 business days'
       },
       {
         id: 'stickers',
-        name: 'LeetPro Sticker Pack',
+        name: 'CodeForge Sticker Pack',
         price: 25,
         image: 'https://images.pexels.com/photos/30101191/pexels-photo-30101191.jpeg',
-        description: 'Collection of cool LeetPro stickers for your laptop.',
+        description: 'Collection of cool CodeForge stickers for your laptop.',
         category: 'accessories',
         inStock: true,
         estimatedDelivery: '3-5 business days'
