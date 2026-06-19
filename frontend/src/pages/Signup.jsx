@@ -18,14 +18,6 @@ const PASSWORD_REQUIREMENTS = [
   { key: 'special', label: 'One special character', test: (p) => /[^a-zA-Z0-9]/.test(p) },
 ];
 
-const PASSWORD_REQUIREMENTS = [
-  { key: 'length', label: 'At least 8 characters', test: (p) => p.length >= 8 },
-  { key: 'uppercase', label: 'One uppercase letter', test: (p) => /[A-Z]/.test(p) },
-  { key: 'lowercase', label: 'One lowercase letter', test: (p) => /[a-z]/.test(p) },
-  { key: 'number', label: 'One number', test: (p) => /[0-9]/.test(p) },
-  { key: 'special', label: 'One special character', test: (p) => /[^a-zA-Z0-9]/.test(p) },
-];
-
 const signupSchema = z.object({
   firstName: z.string().min(3, "Minimum character should be 3"),
   emailId: z.string().email("Invalid Email"),
