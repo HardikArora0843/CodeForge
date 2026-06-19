@@ -24,6 +24,7 @@ import ActivityCalendar from '../components/ActivityCalendar.jsx';
 import StreakDisplay from '../components/StreakDisplay.jsx';
 import GlobalNavigation from '../components/GlobalNavigation.jsx';
 import DailyPlanner from '../components/DailyPlanner.jsx';
+import AdminDemoBanner from '../components/AdminDemoBanner.jsx';
 
 const emptyStats = {
   total: 0,
@@ -334,6 +335,8 @@ function Homepage() {
           </div>
         </div>
       </motion.nav>
+
+      <AdminDemoBanner className="py-3" />
 
       <div className="container mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">

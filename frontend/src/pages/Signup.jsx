@@ -8,6 +8,15 @@ import { motion } from 'framer-motion';
 import { Eye, EyeOff, Code, Lock, Mail, User, Check, X } from 'lucide-react';
 import { registerUser } from '../authSlice.js';
 import GradientButton from '../components/GradientButton.jsx';
+import AdminDemoBanner from '../components/AdminDemoBanner.jsx';
+
+const PASSWORD_REQUIREMENTS = [
+  { key: 'length', label: 'At least 8 characters', test: (p) => p.length >= 8 },
+  { key: 'uppercase', label: 'One uppercase letter', test: (p) => /[A-Z]/.test(p) },
+  { key: 'lowercase', label: 'One lowercase letter', test: (p) => /[a-z]/.test(p) },
+  { key: 'number', label: 'One number', test: (p) => /[0-9]/.test(p) },
+  { key: 'special', label: 'One special character', test: (p) => /[^a-zA-Z0-9]/.test(p) },
+];
 
 const PASSWORD_REQUIREMENTS = [
   { key: 'length', label: 'At least 8 characters', test: (p) => p.length >= 8 },
@@ -65,7 +74,7 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4 py-8 relative overflow-x-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-green-900/20" />
       <div className="absolute inset-0">
@@ -89,6 +98,8 @@ function Signup() {
           />
         ))}
       </div>
+
+      <AdminDemoBanner className="mb-6 relative z-10" />
 
       <motion.div
         className="glass-dark rounded-2xl p-6 w-full max-w-sm border border-gray-700 relative z-10"

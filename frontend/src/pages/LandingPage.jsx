@@ -779,6 +779,7 @@ import { useNavigate } from 'react-router';
 import { useSelector } from 'react-redux';
 import GradientButton from '../components/GradientButton.jsx';
 import AnimatedCard from '../components/AnimatedCard.jsx';
+import AdminDemoBanner from '../components/AdminDemoBanner.jsx';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -907,6 +908,8 @@ const LandingPage = () => {
           />
         ))}
       </div>
+
+      <AdminDemoBanner className="relative z-[60] py-3" />
 
       {/* Navigation */}
       <motion.nav 

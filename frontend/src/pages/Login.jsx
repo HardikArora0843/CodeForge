@@ -8,6 +8,7 @@ import { Eye, EyeOff, Code, Lock, Mail } from 'lucide-react';
 import { loginUser } from "../authSlice.js";
 import { useEffect, useState } from 'react';
 import GradientButton from '../components/GradientButton.jsx';
+import AdminDemoBanner from '../components/AdminDemoBanner.jsx';
 import LoadingSpinner from '../components/LoadingSpinner.jsx';
 import ForgotPasswordModal from '../components/ForgotPasswordModal.jsx';
 
@@ -45,7 +46,7 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4 py-8 relative overflow-x-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20" />
       <div className="absolute inset-0">
@@ -69,6 +70,8 @@ function Login() {
           />
         ))}
       </div>
+
+      <AdminDemoBanner className="mb-6 relative z-10" />
 
       <motion.div
         className="glass-dark rounded-2xl p-6 w-full max-w-sm border border-gray-700 relative z-10"

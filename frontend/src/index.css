@@ -237,3 +237,89 @@
 .status-pending {
   background: linear-gradient(135deg, #6b7280, #4b5563);
 }
+
+/* Admin demo banner — glowing radiant recruiter notice */
+@keyframes admin-banner-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 18px rgba(168, 85, 247, 0.55),
+      0 0 36px rgba(59, 130, 246, 0.35),
+      inset 0 0 12px rgba(168, 85, 247, 0.15);
+    border-color: rgba(168, 85, 247, 0.75);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(236, 72, 153, 0.75),
+      0 0 52px rgba(59, 130, 246, 0.55),
+      inset 0 0 18px rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.9);
+  }
+}
+
+@keyframes admin-banner-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes admin-banner-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
+}
+
+@keyframes admin-banner-icon-spin {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.9));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(251, 191, 36, 1));
+    transform: scale(1.15);
+  }
+}
+
+.admin-demo-banner-inner {
+  border: 2px solid rgba(168, 85, 247, 0.75);
+  background: linear-gradient(
+    135deg,
+    rgba(17, 24, 39, 0.95),
+    rgba(88, 28, 135, 0.25),
+    rgba(17, 24, 39, 0.95)
+  );
+  backdrop-filter: blur(8px);
+  animation: admin-banner-glow 2s ease-in-out infinite;
+}
+
+.admin-demo-banner-text {
+  background: linear-gradient(
+    90deg,
+    #fbbf24,
+    #f472b6,
+    #c084fc,
+    #60a5fa,
+    #34d399,
+    #fbbf24
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: admin-banner-shimmer 2.5s linear infinite, admin-banner-blink 1.8s ease-in-out infinite;
+}
+
+.admin-demo-banner-highlight {
+  background: linear-gradient(90deg, #fde047, #f97316, #fde047);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: admin-banner-shimmer 1.8s linear infinite;
+  text-decoration: underline;
+  text-decoration-color: rgba(251, 191, 36, 0.5);
+  text-underline-offset: 3px;
+}
+
+.admin-demo-banner-icon {
+  color: #fbbf24;
+  animation: admin-banner-icon-spin 1.5s ease-in-out infinite;
+}
